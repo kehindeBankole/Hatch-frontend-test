@@ -4,23 +4,20 @@ import User from "../component/User";
 function Home() {
   const context = useContext(SuperContext);
   const [name, setName] = useState("");
-  const[id , setId] = useState(0)
-  const[open , setOpen] = useState(false)
+  const [id, setId] = useState(0);
   function handleChange(e) {
     setName(e.target.value);
   }
-  function handleClick(uid){
-   id===uid ? setId(null) : setId(uid)
-    // console.log(id)
-   // setOpen(prev=>!prev)
+  function handleClick(uid) {
+    id === uid ? setId(null) : setId(uid);
   }
+
   useEffect(() => {
     context.fetch();
-       // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
   useEffect(() => {
     context.search(name);
-    //context.getregion(name);
     // eslint-disable-next-line
   }, [name, context.data]);
   return (
@@ -51,10 +48,13 @@ function Home() {
                       data.grades.length +
                     "%"
                   }
-                  display={id===data.id ? 'block':'none'}
-                  handleClick={()=>handleClick(data.id)}
-                  stats={data.grades.map((grade , index)=>(
-                    <p>{`Test ${++index}`} : {grade + "%"}</p>
+                  display={id === data.id ? "block" : "none"}
+                  handleClick={() => handleClick(data.id)}
+                  clicked={id === data.id ? true : false}
+                  stats={data.grades.map((grade, index) => (
+                    <p>
+                      {`Test ${++index}`} : {grade + "%"}
+                    </p>
                   ))}
                 />
               </div>

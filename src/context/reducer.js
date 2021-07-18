@@ -6,12 +6,12 @@ export const userReducer = (state, action) => {
         load: true,
       };
     case "success":
-      console.log(action.payload.students);
       return {
         ...state,
-        data: action.payload.students,
+        data:action.payload.students.map((d)=>{return{...d,tag:[]}}),
         load: false,
         err: "",
+
       };
     case "fail":
       return {
@@ -28,20 +28,6 @@ export const userReducer = (state, action) => {
             .toLowerCase()
             .includes(action.payload1.toLowerCase());
         }),
-      };
-    case "byreg":
-      return {
-        ...state,
-        filter: state.data.filter((country) => {
-          let fullName = country.firstName + " " + country.lastName;
-          console.log(fullName);
-          return fullName.toLowerCase() === action.payload2.toLowerCase();
-        }),
-      };
-    case "dark":
-      return {
-        ...state,
-        darkclick: !state.darkclick,
       };
     default:
       return state;

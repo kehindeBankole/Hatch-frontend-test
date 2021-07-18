@@ -1,6 +1,6 @@
 import React from "react";
 
-function User({ data, average , display ,handleClick , stats}) {
+function User({ data, average , display ,handleClick , stats , clicked}) {
   return (
     <div>
       <div className="d-flex container-fluid">
@@ -24,7 +24,9 @@ function User({ data, average , display ,handleClick , stats}) {
         </div>
        </div>
         <div className="ml-auto justify-content-end flex-grow-1">
-        <button className="btn btn-primary" type="submit" onClick={handleClick}>+</button>
+        <button className="" type="submit" onClick={handleClick}>
+          <img src={!clicked ? '/plus.png':'/dash.png'} width="30" height="30" />
+        </button>
         </div>
       </div>
 
