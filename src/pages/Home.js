@@ -4,8 +4,15 @@ import User from "../component/User";
 function Home() {
   const context = useContext(SuperContext);
   const [name, setName] = useState("");
+  const[id , setId] = useState(0)
+  const[open , setOpen] = useState(false)
   function handleChange(e) {
     setName(e.target.value);
+  }
+  function handleClick(uid){
+   id===uid ? setId(null) : setId(uid)
+    // console.log(id)
+   // setOpen(prev=>!prev)
   }
   useEffect(() => {
     context.fetch();
@@ -33,7 +40,7 @@ function Home() {
       <div className="row ">
         {context.filter &&
           context.filter.map((data, key) => (
-            <React.Fragment key={key}>
+            <React.Fragment key={data.id}>
               <div className="col-lg-12">
                 <User
                   data={data}
@@ -44,6 +51,11 @@ function Home() {
                       data.grades.length +
                     "%"
                   }
+                  display={id===data.id ? 'block':'none'}
+                  handleClick={()=>handleClick(data.id)}
+                  stats={data.grades.map((grade , index)=>(
+                    <p>{`Test ${++index}`} : {grade + "%"}</p>
+                  ))}
                 />
               </div>
             </React.Fragment>
