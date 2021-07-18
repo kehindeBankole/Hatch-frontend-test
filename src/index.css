@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding:0;
+  font-family: 'Raleway', sans-serif;
+  overflow-x: hidden
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.imgcontainer {
+  border-radius: 100%;
+  border:2px solid rgb(180, 180, 180);
+  height:100px;
+  width:100px;
+  overflow: hidden;
+}
+.content h1{
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.content p{
+  text-transform: capitalize;
+}
+#searchform{
+  border:0;
+  border-radius:0;
+  border-bottom: 1px solid rgb(180, 180, 180);
+  outline:none !important;
+  width:100%;
+  text-transform: capitalize;
+}
+#searchform:focus{
+  outline:none !important;
+  border: 2px solid red !important;
+}
